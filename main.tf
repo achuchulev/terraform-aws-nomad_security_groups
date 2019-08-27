@@ -73,8 +73,8 @@ resource "aws_security_group" "allow_nomad_ssh_traffic" {
 
   // ssh
   ingress {
-    from_port   = "22"
-    to_port     = "22"
+    from_port   = "${var.ssh_port}"
+    to_port     = "${var.ssh_port}"
     protocol    = "tcp"
     cidr_blocks = ["${var.ssh_cidr}"]
   }
