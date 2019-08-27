@@ -1,5 +1,11 @@
 # Terraform module to create security groups needed for Nomad server|client
 
+## Prerequisites
+
+- git
+- terraform (>=0.12)
+- AWS subscription
+
 ## Inputs
 
 | Name  |	Description |	Type |  Default |	Required
@@ -23,6 +29,8 @@
 
 ## Consume
 
+- Create `main.tf` file:
+
 ```
 // Module that creates Nomad server instances in AWS region "us-east-1", Nomad region "global" and Nomad "dc1"
 module "aws-nomad_security_groups" {
@@ -38,4 +46,27 @@ module "aws-nomad_security_groups" {
   nomad_cidr           = "0.0.0.0/0"
 }
 
+```
+
+- Initialize terraform
+
+```
+terraform init
+```
+
+- Deploy security groups
+
+```
+terraform plan
+terraform apply
+```
+
+- `Terraform apply` will create three new security groups for the specified AWS Region and VPC
+
+## Reference Outputs
+
+```
+module.aws-nomad_security_groups.security_group_nomad_traffic
+module.aws-nomad_security_groups.security_group_ssh_traffic
+module.aws-nomad_security_groups.security_group_icmp_traffic
 ```
