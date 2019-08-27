@@ -20,3 +20,22 @@
 | security_group_nomad_traffic  | ID of Security group that allows nomad traffic
 | security_group_ssh_traffic | ID of Security group that allows ssh traffic
 | security_group_icmp_traffic  | ID of Security group that allows icmp traffic
+
+## Consume
+
+```
+// Module that creates Nomad server instances in AWS region "us-east-1", Nomad region "global" and Nomad "dc1"
+module "aws-nomad_security_groups" {
+  source = "git@github.com:achuchulev/terraform-aws-nomad_security_groups.git"
+
+  access_key           = "aws_access_key"
+  secret_key           = "aws_secret_key"
+  region               = "us-east-1"
+  aws_vpc_id           = "aws_vpc_id"
+  icmp_cidr            = "0.0.0.0/0"
+  ssh_cidr             = "0.0.0.0/0"
+  ssh_port             = "22"
+  nomad_cidr           = "0.0.0.0/0"
+}
+
+```
