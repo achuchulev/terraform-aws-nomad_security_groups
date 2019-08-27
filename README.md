@@ -32,7 +32,7 @@
 - Create `main.tf` file:
 
 ```
-// Module that creates Nomad server instances in AWS region "us-east-1", Nomad region "global" and Nomad "dc1"
+// Module that creates security groups on AWS to allow traffic needed for Nomad server|client
 module "aws-nomad_security_groups" {
   source = "git@github.com:achuchulev/terraform-aws-nomad_security_groups.git"
 
